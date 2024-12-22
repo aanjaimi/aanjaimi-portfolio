@@ -1,75 +1,70 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
-import { useRef } from 'react';
 import { gsap } from 'gsap'
-import Hero from './components/hero-section';
-// import { useGSAP } from '@gsap/react'
+import HeroSection from './components/hero-section';
+import HeaderSection from './components/header-section';
 
 function App() {
-  // const cursorRef = useRef(null);
+  const cursorRef = useRef(null);
 
-  // React.useEffect(() => {
-  //   const cursor = cursorRef.current;
+  React.useEffect(() => {
+    const cursor = cursorRef.current;
     
-  //   // Initial cursor position off screen
-  //   gsap.set(cursor, {
-  //     x: -100,
-  //     y: -100,
-  //     opacity: 0
-  //   });
+    // Initial cursor position off screen
+    gsap.set(cursor, {
+      x: -100,
+      y: -100,
+      opacity: 0
+    });
 
-  //   // Animation configuration
-  //   const cursorAnimation = {
-  //     duration: 0.5,
-  //     ease: "power2.out"
-  //   };
+    // Animation configuration
+    const cursorAnimation = {
+      duration: 0.5,
+      ease: "power2.out"
+    };
 
-  //   // Mouse move handler
-  //   const onMouseMove = (e: any) => {
-  //     gsap.to(cursor, {
-  //       x: e.clientX,
-  //       y: e.clientY,
-  //       opacity: 1,
-  //       ...cursorAnimation
-  //     });
-  //   };
+    // Mouse move handler
+    const onMouseMove = (e: any) => {
+      gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        opacity: 1,
+        ...cursorAnimation
+      });
+    };
     
-  //   // Mouse leave handler
-  //   const onMouseOut = () => {
-  //     gsap.killTweensOf(cursor); // Kill any ongoing animations
-  //     gsap.to(cursor, {
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       ease: "power2.inOut"
-  //     });
-  //   };
+    // Mouse leave handler
+    const onMouseOut = () => {
+      gsap.killTweensOf(cursor); // Kill any ongoing animations
+      gsap.to(cursor, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.inOut"
+      });
+    };
 
-  //   // Add and remove event listener
-  //   window.addEventListener("mousemove", onMouseMove);
-  //   window.addEventListener("mouseout", onMouseOut);
+    // Add and remove event listener
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseout", onMouseOut);
     
-  //   return () => {
-  //     window.removeEventListener("mousemove", onMouseMove);
-  //     window.removeEventListener("mouseout", onMouseOut);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseout", onMouseOut);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      {/* <div
+    <main className="min-h-screen bg-black  text-white relative overflow-hidden">
+      {/* Fixed background that covers the entire viewport */}
+      <div className="fixed inset-0 bg-black z-0"></div>
+      <div
         ref={cursorRef}
         className="fixed w-2 h-2 bg-white rounded-full pointer-events-none 
-                  mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
-      ></div> */}
-
-      {/* <div className="container mx-auto p-8">
-        <h1 className="text-4xl text-white mb-4">Move your mouse around</h1>
-        <p className="text-gray-300">
-          The circle will follow your cursor with a smooth animation.
-        </p>
-      </div> */}
-      <Hero />
-    </div>
+                  mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 z-50"
+      ></div>
+      <HeaderSection />
+      <HeroSection />
+    </main>
   );
 }
 
