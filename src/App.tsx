@@ -3,6 +3,7 @@ import './App.css';
 import { gsap } from 'gsap'
 import HeroSection from './components/hero-section';
 import HeaderSection from './components/header-section';
+import AboutSection from './components/about-section';
 
 function App() {
   const cursorRef = useRef(null);
@@ -64,6 +65,7 @@ function App() {
       ></div>
       <HeaderSection />
       <HeroSection />
+      <AboutSection />
     </main>
   );
 }
