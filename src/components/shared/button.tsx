@@ -63,7 +63,7 @@ const Button = ({ text, backgroundColor }: ButtonProps) => {
 			button.removeEventListener("mouseleave", handleLeave);
 			tl.kill();
 		};
-	}, []);
+	}, [backgroundColor]);
 
 	return (
 		<div className="relative">

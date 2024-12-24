@@ -8,15 +8,6 @@ const HeroSection = () => {
 	const circleRefs = useRef<HTMLDivElement[]>([]);
 
 	useEffect(() => {
-		// Text animations
-		gsap.from(".hero-title span", {
-			y: 50,
-			opacity: 0,
-			duration: 1,
-			ease: "power2.out",
-			stagger: 0.2,
-		});
-		
 		// Floating circles animation
 		circleRefs.current.forEach((circle, index) => {
 			gsap.to(circle, {
@@ -37,29 +28,6 @@ const HeroSection = () => {
 			circleRefs.current.push(el);
 		}
 	};
-
-	gsap.from(".hero-title span", {
-		y: 50,
-		opacity: 0,
-		duration: 1,
-		ease: "power2.out",
-		stagger: 0.2,
-	});
-	
-	gsap.to(".cta-button", {
-		scale: 1.1,
-		duration: 0.2,
-		ease: "power1.inOut",
-		paused: true,
-	});
-	
-	gsap.to(".scroll-indicator", {
-		y: 10,
-		repeat: -1,
-		yoyo: true,
-		duration: 1,
-		ease: "power1.inOut",
-	});
 
 	return (
 		<section id='#hero' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white border rounded-t-[70px] rounded-b-[70px]">
