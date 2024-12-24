@@ -1,42 +1,42 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Github, Linkedin, Twitter } from 'lucide-react';
-import Button from './button';
+import Button from './shared/button';
 
 
 const HeroSection = () => {
 	const circleRefs = useRef<HTMLDivElement[]>([]);
 
 	useEffect(() => {
-    // Text animations
-    gsap.from(".hero-title span", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.2,
-    });
-    
-    // Floating circles animation
-    circleRefs.current.forEach((circle, index) => {
-      gsap.to(circle, {
-        y: "random(-30, 30)",
-        x: "random(-30, 30)",
-        rotation: "random(-360, 360)",
-        duration: "random(3, 6)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: index * 0.1
-      });
-    });
-  }, []);
+		// Text animations
+		gsap.from(".hero-title span", {
+			y: 50,
+			opacity: 0,
+			duration: 1,
+			ease: "power2.out",
+			stagger: 0.2,
+		});
+		
+		// Floating circles animation
+		circleRefs.current.forEach((circle, index) => {
+			gsap.to(circle, {
+				y: "random(-30, 30)",
+				x: "random(-30, 30)",
+				rotation: "random(-360, 360)",
+				duration: "random(3, 6)",
+				repeat: -1,
+				yoyo: true,
+				ease: "sine.inOut",
+				delay: index * 0.1
+			});
+		});
+	}, []);
 
-  const addToRefs = (el: HTMLDivElement | null) => {
-    if (el && !circleRefs.current.includes(el)) {
-      circleRefs.current.push(el);
-    }
-  };
+	const addToRefs = (el: HTMLDivElement | null) => {
+		if (el && !circleRefs.current.includes(el)) {
+			circleRefs.current.push(el);
+		}
+	};
 
 	gsap.from(".hero-title span", {
 		y: 50,
@@ -62,25 +62,25 @@ const HeroSection = () => {
 	});
 
 	return (
-		<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white border rounded-t-[70px]">
+		<section id='#hero' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white border rounded-t-[70px] rounded-b-[70px]">
 			{/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            ref={addToRefs}
-            className="absolute rounded-full opacity-10"
-            style={{
-              background: "linear-gradient(92.23deg, #ff56f6 21.43%, #b936ee 50.63%, #3bace2 100%, #406aff 117.04%)",
-              width: `${Math.random() * 200 + 30}px`,
-              height: `${Math.random() * 200 + 30}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+			<div className="absolute inset-0 overflow-hidden">
+				{[...Array(15)].map((_, i) => (
+					<div
+						key={i}
+						ref={addToRefs}
+						className="absolute rounded-full opacity-10"
+						style={{
+							background: "linear-gradient(92.23deg, #ff56f6 21.43%, #b936ee 50.63%, #3bace2 100%, #406aff 117.04%)",
+							width: `${Math.random() * 200 + 30}px`,
+							height: `${Math.random() * 200 + 30}px`,
+							left: `${Math.random() * 100}%`,
+							top: `${Math.random() * 100}%`,
 							transform: `rotate(${Math.random() * 360}deg)`,
-            }}
-          />
-        ))}
-      </div>
+						}}
+					/>
+				))}
+			</div>
 			
 			<div
 				className="relative z-10 text-center px-4"

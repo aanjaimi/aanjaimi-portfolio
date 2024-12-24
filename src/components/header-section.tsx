@@ -1,10 +1,10 @@
 import React from 'react'
-import Button from './button'
+import Button from './shared/button'
 
 const HeaderSection = () => {
 
 	return (
-		<header className='py-8 relative overflow-hidden'>
+		<header id='header' className='py-8 relative bg-black overflow-hidden'>
 			<div className="container mx-auto">
 				<div className="flex justify-between items-center">
 					<a href="/">
