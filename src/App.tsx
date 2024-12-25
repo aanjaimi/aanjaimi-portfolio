@@ -5,6 +5,7 @@ import HeroSection from './components/hero-section';
 import HeaderSection from './components/header-section';
 import AboutSection from './components/about-section';
 import ProjectsSection from './components/projects-section';
+import ContactSection from './components/contact-section';
 
 function App() {
 	const cursorRef = useRef(null);
@@ -68,6 +69,7 @@ function App() {
 			<HeroSection />
 			<AboutSection />
 			<ProjectsSection />
+			<ContactSection />
 		</main>
 	);
 }
